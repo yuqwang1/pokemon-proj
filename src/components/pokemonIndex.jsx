@@ -15,9 +15,9 @@ class PokemonIndex extends Component {
           <br/>
           <span> Defense: { this.props.poke.stats[3].base_stat }</span>
           <br/>
-          <span> Attack: { this.props.poke.stats[4].base_stat}</span>
+          <span> Attack: { this.props.poke.stats[4].base_stat }</span>
           <br/>
-          <span> Stamina: { this.props.poke.stats[5].base_stat}</span>
+          <span> Stamina: { this.props.poke.stats[5].base_stat }</span>
           <br/>
           <span>Types: { this.props.poke.types[0].type.name }</span>
         </div> : null

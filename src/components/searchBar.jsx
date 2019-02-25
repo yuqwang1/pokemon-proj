@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import PokemonIndex from './pokemonIndex'
+import PokemonIndex from './pokemonIndex';
+import BarGraph from './BarGraph'
 
 class SearchBar extends Component {
     state = {
@@ -37,6 +38,7 @@ handleSubmit = (e) => {
           <input type='submit' value='Search'/>
         </form>
         <PokemonIndex poke={ this.state.poke }/>
+        <BarGraph poke={ this.state.poke }/>
       </div>
 
     )
