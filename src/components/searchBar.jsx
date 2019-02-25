@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import PokemonIndex from './pokemonIndex';
-import BarGraph from './BarGraph'
+import BarGraph from './barGraph'
 
 class SearchBar extends Component {
     state = {
-      search: 'pikachu',
+      search: '',
       poke: null
     }
 
