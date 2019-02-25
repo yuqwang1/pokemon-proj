@@ -5,20 +5,22 @@ class PokemonIndex extends Component {
 
     render() {
       console.log(this.props.poke)
-      
+
       return(
-        <div>
+        this.props.poke ? <div>
           <h1>Pokemon Index</h1>
-          <span>{ this.props.poke && this.props.poke.name }</span>
+          <span>{ this.props.poke.name }</span>
           <br/>
-          <span> Defense: { this.props.poke && this.props.poke.stats[3].base_stat }</span>
+          <img src={ this.props.poke.sprites.front_default }/>
           <br/>
-          <span> Attack: { this.props.poke && this.props.poke.stats[4].base_stat}</span>
+          <span> Defense: { this.props.poke.stats[3].base_stat }</span>
           <br/>
-          <span> Stamina: { this.props.poke && this.props.poke.stats[5].base_stat}</span>
+          <span> Attack: { this.props.poke.stats[4].base_stat}</span>
           <br/>
-          <span>Age: { this.props.poke && this.props.poke.age }</span>
-        </div>
+          <span> Stamina: { this.props.poke.stats[5].base_stat}</span>
+          <br/>
+          <span>Types: { this.props.poke.types[0].type.name }</span>
+        </div> : null
       )
     }
 }
