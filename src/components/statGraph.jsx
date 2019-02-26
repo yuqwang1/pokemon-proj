@@ -3,12 +3,13 @@ import {
   BarChart, Bar, Cell, XAxis, YAxis, CartesianGrid, Tooltip, Legend,
 } from 'recharts';
 
-
 const margin = {top: 5, right: 30, bottom: 5, left: 20};
 
-class BarGraph extends Component {
+class StatGraph extends Component {
 
   static jsfiddleUrl = 'https://jsfiddle.net/alidingling/30763kr7/';
+
+
 
   render() {
     if (this.props.poke){
@@ -20,22 +21,24 @@ class BarGraph extends Component {
     }
 
     return (
-      this.props.poke ?
-      <BarChart
+      <div>
+        { this.props.poke ?
+        <BarChart
         width={500}
         height={300}
         data={ data }
         margin={ margin }
-      >
+        >
         <XAxis dataKey="text" />
         <YAxis />
         <Tooltip />
         <Legend />
-        <Bar dataKey='value' fill={ data.value > 50 ? 'red' : 'yellow'} />
+        <Bar dataKey='value' fill='red' />
 
-      </BarChart> : null
+        </BarChart> : null }
+      </div>
     );
   }
 };
 
-export default BarGraph;
+export default StatGraph;

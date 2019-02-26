@@ -1,14 +1,19 @@
 import React, { Component } from 'react';
 import PokemonIndex from './pokemonIndex';
-import BarGraph from './barGraph'
+import StatGraph from './statGraph';
+import MoveGraph from './moveGraph';
 
 class SearchBar extends Component {
     state = {
       search: 'pikachu',
       poke: null,
-      error: null
+      error: null,
+      on: false
     }
 
+handleToggle = () => {
+  this.setState({ on: !this.state.on })
+}
 
 handleSubmit = (e) => {
   e.preventDefault();
@@ -27,6 +32,7 @@ handleSubmit = (e) => {
 
 
   render() {
+    const { poke, error, on, search } = this.state
     return(
       <div>
         <h1>Search Bar</h1>
@@ -34,13 +40,14 @@ handleSubmit = (e) => {
           <input
             type='text'
             placeholder='pikachu'
-            value={this.state.search}
+            value={search}
             onChange={this.updateForm('search')}
             />
           <input type='submit' value='Search'/>
         </form>
-        <PokemonIndex poke={ this.state.poke } error={ this.state.error }/>
-        <BarGraph poke={ this.state.poke }/>
+        <PokemonIndex poke={ poke } error={ error }/>
+        <button onClick={ this.handleToggle}>Stats/Move</button>
+        { !on ? <StatGraph poke={ poke }/> : <MoveGraph poke={ poke }/>}
       </div>
 
     )
