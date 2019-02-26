@@ -77,7 +77,7 @@ class SearchBar extends Component {
 }
 
 const mapStateToProps = state => ({
-  pokemons: state.pokes.pokemons
+  pokemons: state.pokes.pokes
 })
 
 export default connect(mapStateToProps, { fetchPokes })(SearchBar);
