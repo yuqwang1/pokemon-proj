@@ -44,7 +44,7 @@ class SearchBar extends Component {
 
 
   render() {
-    const { poke, error, toggleOn, search} = this.state
+    const { poke, error, toggleOn,} = this.state
     let pokes = [];
     if (this.state.pokemons){
        pokes = this.state.pokemons.results.map(poke => (
