@@ -3,6 +3,7 @@ import PokemonIndex from './pokemonIndex';
 import StatGraph from './statGraph';
 import MoveGraph from './moveGraph';
 import AutoComplete from 'material-ui/AutoComplete';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
 class SearchBar extends Component {
     state = {
@@ -19,6 +20,9 @@ class SearchBar extends Component {
       .then(pokemons => this.setState({ pokemons}))
     }
 
+  componentWillUnmont(){
+  }
+
   handleToggle = () => {
     this.setState({ on: !this.state.on })
   }
@@ -32,35 +36,36 @@ class SearchBar extends Component {
   }
 
 
-  updateForm(field) {
-    return e => {
-      this.setState({ [field]: e.target.value })
-    };
-  }
+  handleUpdateInput = (search) => {
+    this.setState({
+      search,
+    });
+  };
+
 
 
   render() {
     const { poke, error, on, search } = this.state
-    // for (let i = 0; i < this.state.pokemons.length; i++) {
-    //   pokes.push(this.state.pokemons[i].name)
-    // }
     let pokes = [];
     if (this.state.pokemons){
        pokes = this.state.pokemons.results.map(poke => (
         poke.name
       ))
     }
-    
+
     return(
-      <div>
+      <div className='search'>
         <h1>Search Bar</h1>
         <form onSubmit={ this.handleSubmit }>
-          <input
-            type='text'
-            placeholder='pikachu'
-            value={search}
-            onChange={this.updateForm('search')}
+          <MuiThemeProvider>
+          <AutoComplete
+            floatingLabelText="Search your favorite pokemon"
+            filter={AutoComplete.fuzzyFilter}
+            dataSource={pokes}
+            maxSearchResults={3}
+            onUpdateInput={this.handleUpdateInput}
             />
+          </MuiThemeProvider>
           <input type='submit' value='Search'/>
         </form>
         <PokemonIndex poke={ poke } error={ error }/>
