@@ -5,7 +5,8 @@ import BarGraph from './barGraph'
 class SearchBar extends Component {
     state = {
       search: '',
-      poke: null
+      poke: null,
+      error: null
     }
 
 
@@ -14,6 +15,7 @@ handleSubmit = (e) => {
   fetch(`https://pokeapi.co/api/v2/pokemon/${this.state.search}`)
   .then(res => res.json())
   .then(poke => this.setState({ poke }))
+  .catch(error => this.setState({ error }))
 }
 
 
@@ -37,7 +39,7 @@ handleSubmit = (e) => {
             />
           <input type='submit' value='Search'/>
         </form>
-        <PokemonIndex poke={ this.state.poke }/>
+        <PokemonIndex poke={ this.state.poke } error={ this.state.error }/>
         <BarGraph poke={ this.state.poke }/>
       </div>
 
