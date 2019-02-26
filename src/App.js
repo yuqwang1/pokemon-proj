@@ -3,7 +3,6 @@ import './scss/main.scss'
 
 import { connect } from 'react-redux'
 import * as actions from './redux/actions'
-import PokemonIndex from './components/pokemonIndex';
 import SearchBar from './components/searchBar';
 
 class App extends Component {
@@ -16,8 +15,6 @@ class App extends Component {
       <div>
         <h1>{this.props.title}</h1>
         <SearchBar/>
-        <PokemonIndex />
-
       </div>
     )
   }

@@ -4,11 +4,8 @@ import React, { Component } from 'react';
 class PokemonIndex extends Component {
 
     render() {
-      console.log(this.props.poke)
-      console.log(this.props.error)
       return(
         this.props.poke ? <div>
-          <h1>Pokemon Index</h1>
           <span>{ this.props.poke.name }</span>
           <br/>
           <img src={ this.props.poke.sprites.front_default } alt=''/>

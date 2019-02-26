@@ -7,10 +7,10 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
 class SearchBar extends Component {
     state = {
-      search: 'pikachu',
+      search: '',
       poke: null,
       error: null,
-      on: false,
+      toggleOn: false,
       pokemons: null
     }
 
@@ -20,11 +20,8 @@ class SearchBar extends Component {
       .then(pokemons => this.setState({ pokemons}))
     }
 
-  componentWillUnmont(){
-  }
-
   handleToggle = () => {
-    this.setState({ on: !this.state.on })
+    this.setState({ toggleOn: !this.state.toggleOn })
   }
 
   handleSubmit = (e) => {
@@ -45,7 +42,7 @@ class SearchBar extends Component {
 
 
   render() {
-    const { poke, error, on, search } = this.state
+    const { poke, error, toggleOn,} = this.state
     let pokes = [];
     if (this.state.pokemons){
        pokes = this.state.pokemons.results.map(poke => (
@@ -55,22 +52,22 @@ class SearchBar extends Component {
 
     return(
       <div className='search'>
-        <h1>Search Bar</h1>
         <form onSubmit={ this.handleSubmit }>
           <MuiThemeProvider>
-          <AutoComplete
-            floatingLabelText="Search your favorite pokemon"
-            filter={AutoComplete.fuzzyFilter}
-            dataSource={pokes}
-            maxSearchResults={3}
-            onUpdateInput={this.handleUpdateInput}
-            />
+            <AutoComplete
+              floatingLabelText="Search your favorite pokemon"
+              filter={AutoComplete.fuzzyFilter}
+              dataSource={pokes}
+              maxSearchResults={3}
+              onUpdateInput={this.handleUpdateInput}
+              />
           </MuiThemeProvider>
           <input type='submit' value='Search'/>
         </form>
         <PokemonIndex poke={ poke } error={ error }/>
-        <button onClick={ this.handleToggle}>Stats/Move</button>
-        { !on ? <StatGraph poke={ poke }/> : <MoveGraph poke={ poke }/>}
+        { this.state.poke ? <button onClick={ this.handleToggle }>Stats/Move</button> : null}
+
+        { !toggleOn ? <StatGraph poke={ poke }/> : <MoveGraph poke={ poke }/>}
       </div>
 
     )
