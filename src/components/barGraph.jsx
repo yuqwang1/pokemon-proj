@@ -1,36 +1,39 @@
 import React, { Component } from 'react'
-import BarChart from 'react-bar-chart';
+import {
+  BarChart, Bar, Cell, XAxis, YAxis, CartesianGrid, Tooltip, Legend,
+} from 'recharts';
 
 
-const margin = {top: 20, right: 20, bottom: 30, left: 40};
-
-
-
-
+const margin = {top: 5, right: 30, bottom: 5, left: 20};
 
 class BarGraph extends Component {
 
-  handleBarClick(element, id){
-    console.log(`The bin ${element.text} with id ${id} was clicked`);
-  }
+  static jsfiddleUrl = 'https://jsfiddle.net/alidingling/30763kr7/';
 
   render() {
+    if (this.props.poke){
+      var data = [
+        { text: 'Attack', value: this.props.poke.stats[4].base_stat },
+        { text: 'Defense', value: this.props.poke.stats[3].base_stat },
+        { text: 'Stamina', value: this.props.poke.stats[5].base_stat }
+      ]
+    }
+
     return (
       this.props.poke ?
-        <div ref='root'>
-            <div style={{width: '50%'}}>
-                <BarChart ylabel='Quantity'
-                  width={500}
-                  height={500}
-                  margin={margin}
-                  data={[
-                    { text: 'Attack', value: this.props.poke.stats[4].base_stat },
-                    { text: 'Defense', value: this.props.poke.stats[3].base_stat },
-                    { text: 'Stamina', value: this.props.poke.stats[5].base_stat }
-                  ]}
-                  onBarClick={this.handleBarClick}/>
-            </div>
-        </div> : null
+      <BarChart
+        width={500}
+        height={300}
+        data={ data }
+        margin={ margin }
+      >
+        <XAxis dataKey="text" />
+        <YAxis />
+        <Tooltip />
+        <Legend />
+        <Bar dataKey='value' fill={ data.value > 50 ? 'red' : 'yellow'} />
+
+      </BarChart> : null
     );
   }
 };

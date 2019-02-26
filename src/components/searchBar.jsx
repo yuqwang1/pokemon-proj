@@ -4,7 +4,7 @@ import BarGraph from './barGraph'
 
 class SearchBar extends Component {
     state = {
-      search: '',
+      search: 'pikachu',
       poke: null,
       error: null
     }
@@ -33,7 +33,7 @@ handleSubmit = (e) => {
         <form onSubmit={ this.handleSubmit }>
           <input
             type='text'
-            placeholder='pokemon'
+            placeholder='pikachu'
             value={this.state.search}
             onChange={this.updateForm('search')}
             />
