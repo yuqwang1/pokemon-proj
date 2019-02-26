@@ -4,6 +4,8 @@ import StatGraph from './statGraph';
 import MoveGraph from './moveGraph';
 import AutoComplete from 'material-ui/AutoComplete';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import { connect } from 'react-redux';
+import { fetchPokes } from '../redux/actions/pokeActions'
 
 
 class SearchBar extends Component {
@@ -11,15 +13,13 @@ class SearchBar extends Component {
       search: '',
       poke: null,
       error: null,
-      toggleOn: false,
-      pokemons: null
+      toggleOn: false
     }
 
   componentDidMount(){
-      fetch('https://pokeapi.co/api/v2/pokemon/?limit=964&offset=0')
-      .then(res => res.json())
-      .then(pokemons => this.setState({ pokemons}))
-    }
+    this.props.fetchPokes();
+  }
+
 
   handleToggle = () => {
     this.setState({ toggleOn: !this.state.toggleOn })
@@ -46,8 +46,8 @@ class SearchBar extends Component {
   render() {
     const { poke, error, toggleOn,} = this.state
     let pokes = [];
-    if (this.state.pokemons){
-       pokes = this.state.pokemons.results.map(poke => (
+    if (this.props.pokemons){
+       pokes = this.props.pokemons.results.map(poke => (
         poke.name
       ))
     }
@@ -76,4 +76,8 @@ class SearchBar extends Component {
   }
 }
 
-export default SearchBar;
+const mapStateToProps = state => ({
+  pokemons: state.pokes.pokemons
+})
+
+export default connect(mapStateToProps, { fetchPokes })(SearchBar);
