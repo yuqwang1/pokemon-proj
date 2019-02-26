@@ -20,7 +20,7 @@ class PokemonIndex extends Component {
           <span> Stamina: { this.props.poke.stats[5].base_stat }</span>
           <br/>
           <span>Types: { this.props.poke.types[0].type.name }</span>
-        </div> : this.props.error ? <h1> Please enter a correct input </h1> : null
+        </div> : this.props.error ? <h1> Try another name please </h1> : null
       )
     }
 }
