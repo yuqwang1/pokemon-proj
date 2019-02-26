@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 
-class PokemonIndex extends Component {
+class InfoBox extends Component {
 
     render() {
       return(
@@ -23,4 +23,4 @@ class PokemonIndex extends Component {
 }
 
 
-export default PokemonIndex
+export default InfoBox

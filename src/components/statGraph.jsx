@@ -7,9 +7,6 @@ const margin = {top: 5, right: 30, bottom: 5, left: 20};
 
 class StatGraph extends Component {
 
-  static jsfiddleUrl = 'https://jsfiddle.net/alidingling/30763kr7/';
-
-
 
   render() {
     if (this.props.poke){

@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
-import PokemonIndex from './pokemonIndex';
+import InfoBox from './infoBox';
 import StatGraph from './statGraph';
 import MoveGraph from './moveGraph';
 import AutoComplete from 'material-ui/AutoComplete';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+
 
 class SearchBar extends Component {
     state = {
@@ -41,8 +42,9 @@ class SearchBar extends Component {
 
 
 
+
   render() {
-    const { poke, error, toggleOn,} = this.state
+    const { poke, error, toggleOn, search} = this.state
     let pokes = [];
     if (this.state.pokemons){
        pokes = this.state.pokemons.results.map(poke => (
@@ -64,7 +66,7 @@ class SearchBar extends Component {
           </MuiThemeProvider>
           <input type='submit' value='Search'/>
         </form>
-        <PokemonIndex poke={ poke } error={ error }/>
+        <InfoBox poke={ poke } error={ error }/>
         { this.state.poke ? <button onClick={ this.handleToggle }>Stats/Move</button> : null}
 
         { !toggleOn ? <StatGraph poke={ poke }/> : <MoveGraph poke={ poke }/>}
