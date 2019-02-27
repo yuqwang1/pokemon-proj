@@ -76,7 +76,7 @@ class SearchBar extends Component {
           <InfoBox poke={ poke } error={ error }/>
         </div>
 
-        { !poke ? <img className='stat-graph-toggle' src='https://wallup.net/wp-content/uploads/2017/11/17/178943-Pokemon.jpg'/> :
+        { !poke ? <img className='stat-graph-toggle' alt='' src='https://wallup.net/wp-content/uploads/2017/11/17/178943-Pokemon.jpg'/> :
           <div className='stat-graph-toggle'>
             <div className='toggle'>
               { this.state.poke ?

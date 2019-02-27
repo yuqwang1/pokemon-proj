@@ -6,5 +6,4 @@ import pokeReducer from './pokeReducer';
 export default combineReducers({
   title,
   pokes: pokeReducer,
-
 })

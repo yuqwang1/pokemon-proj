@@ -54,13 +54,13 @@ class StatGraph extends Component {
         margin={margin}
         >
         <XAxis dataKey='text'/>
-        <YAxis />
+        <YAxis type='number' domain={ [0, dataMax => Math.ceil((dataMax+11)/10)*10] }/>
         <Tooltip />
         <Legend />
 
-        <Bar type='monotone' barSize={30} dataKey='Attack' fill={ this.color(attack) } label={renderCustomBarLabel}/>
-        <Bar type='monotone' barSize={30} dataKey='Defense' fill={ this.color(defense) } label={renderCustomBarLabel}/>
-        <Bar type='monotone' barSize={30} dataKey='Stamina' fill={ this.color(stamina) } label={renderCustomBarLabel}/>
+        <Bar legendType='diamond' type='monotone' barSize={80} dataKey='Attack' fill={ this.color(attack) } label={renderCustomBarLabel}/>
+        <Bar legendType='circle' type='monotone' barSize={80} dataKey='Defense' fill={ this.color(defense) } label={renderCustomBarLabel}/>
+        <Bar legendType='cross' type='monotone' barSize={80} dataKey='Stamina' fill={ this.color(stamina) } label={renderCustomBarLabel}/>
 
         </BarChart> : null }
       </div>
