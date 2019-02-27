@@ -7,7 +7,6 @@ const margin = {top: 5, right: 30, bottom: 5, left: 20};
 
 class StatGraph extends Component {
 
-
   render() {
     if (this.props.poke){
       var data = [

@@ -54,7 +54,7 @@ class SearchBar extends Component {
 
     return(
       <div className='search'>
-        <form onSubmit={ this.handleSubmit }>
+        <form onSubmit={ this.handleSubmit } className='search-form'>
           <MuiThemeProvider>
             <AutoComplete
               floatingLabelText="Search your favorite pokemon"
@@ -77,7 +77,7 @@ class SearchBar extends Component {
 }
 
 const mapStateToProps = state => ({
-  pokemons: state.pokes.pokes
+  pokemons: state.pokes.pokemons
 })
 
 export default connect(mapStateToProps, { fetchPokes })(SearchBar);

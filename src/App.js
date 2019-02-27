@@ -12,14 +12,14 @@ import store from './store'
 
 class App extends Component {
   componentDidMount () {
-    this.props.setTitle('POKEMON`')
+    this.props.setTitle('Search for Pokémon')
   }
 
   render () {
     return (
       <Provider store={store}>
         <div>
-          <h1>{this.props.title}</h1>
+          <h1 className='title'>{this.props.title}</h1>
           <SearchBar/>
         </div>
       </Provider>

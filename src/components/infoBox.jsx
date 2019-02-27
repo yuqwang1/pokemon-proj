@@ -5,7 +5,7 @@ class InfoBox extends Component {
 
     render() {
       return(
-        this.props.poke ? <div>
+        this.props.poke ? <div className='info-box'>
           <span>{ this.props.poke.name }</span>
           <br/>
           <img src={ this.props.poke.sprites.front_default } alt=''/>

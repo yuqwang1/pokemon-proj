@@ -11,7 +11,7 @@ export default function(state = initialState, action) {
     case FETCH_POKES:
       return {
         ...state,
-        pokes: action.pokemons
+        pokemons: action.pokemons
       }
 
     default:
