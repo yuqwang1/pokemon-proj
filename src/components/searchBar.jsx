@@ -58,15 +58,17 @@ class SearchBar extends Component {
       <div>
         <div className='left'>
           <form onSubmit={ this.handleSubmit } className='search-form'>
-            <MuiThemeProvider>
-              <AutoComplete
-                hintText="Search your favorite Pokémon"
-                filter={AutoComplete.fuzzyFilter}
-                dataSource={pokes}
-                maxSearchResults={3}
-                onUpdateInput={this.handleUpdateInput}
-                />
-            </MuiThemeProvider>
+            <div className='auto-complete'>
+              <MuiThemeProvider>
+                <AutoComplete
+                  hintText="Search your favorite Pokémon"
+                  filter={AutoComplete.fuzzyFilter}
+                  dataSource={pokes}
+                  maxSearchResults={3}
+                  onUpdateInput={this.handleUpdateInput}
+                  />
+              </MuiThemeProvider>
+            </div>
 
             <button className="searchbar-button" type='submit'><i className="fa fa-search fa-2x"></i></button>
           </form>

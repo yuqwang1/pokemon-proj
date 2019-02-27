@@ -28,7 +28,6 @@ body {
   background-color: white;
   margin-left: 60px;
   position: relative;
-  background-color: #ffffff;
   -webkit-transition: box-shadow 200ms ease-in;
   -moz-transition: box-shadow 200ms ease-in;
   transition: box-shadow 200ms ease-in;
@@ -56,9 +55,14 @@ button {
 }
 
 .searchbar-button {
-  width: 40px;
-  height: 40px;
+  width: 35px;
+  height: 35px;
   border: white;
+}
+
+.auto-complete {
+  margin-left: 5px;
+
 }
 
 
@@ -73,23 +77,32 @@ button {
   background-color: white;
   width: 300px;
   border-radius: 4px;
-  text-align: center;
   height: 400px;
+  -webkit-transition: box-shadow 200ms ease-in;
+  -moz-transition: box-shadow 200ms ease-in;
+  transition: box-shadow 200ms ease-in;
+  border: 1px solid #EBEBEB;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 
 .poke-img {
   width: 200px;
   height: 180px;
+  margin-left: 50px;
 }
 
 .poke-name {
+  text-align: center;
   margin-bottom: 0px;
   margin-top: 0px;
 }
 
-.poke-type2 {
-  margin-left: 58px;
+.poke-info {
+  margin-left: 95px;
 }
+
+
 
 
 // statGraph
@@ -100,6 +113,12 @@ button {
   border-radius: 4px;
   height: 470px;
   background-color: white;
+  -webkit-transition: box-shadow 200ms ease-in;
+  -moz-transition: box-shadow 200ms ease-in;
+  transition: box-shadow 200ms ease-in;
+  border: 1px solid #EBEBEB;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 
 
