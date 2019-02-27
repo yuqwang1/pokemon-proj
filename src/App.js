@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import './scss/main.scss'
 import './scss/moveGraph.scss'
 import './scss/infoBox.scss';
+import './scss/statGraph.scss';
+import './scss/searchBar.scss';
 import { connect } from 'react-redux'
 import * as actions from './redux/actions'
 import SearchBar from './components/searchBar';
