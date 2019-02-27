@@ -33,14 +33,14 @@ class SearchBar extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
-    if (!this.state.search){
-      this.setState({ error: 'Search box can not be empty' })
-    } else {
-      fetch(`https://pokeapi.co/api/v2/pokemon/${this.state.search}`)
+    if (this.state.search.trim()){
+      fetch(`https://pokeapi.co/api/v2/pokemon/${this.state.search.trim()}`)
       // .then(handleErrors)
       .then(res => res.json())
       .then(poke => this.setState({ poke, error: null }))
       .catch(() => this.setState({ error: 'Please try another name' }))
+    } else {
+      this.setState({ error: 'Search box can not be empty' })
 
     }
 

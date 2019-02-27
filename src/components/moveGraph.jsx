@@ -15,8 +15,8 @@ class MoveGraph extends Component {
     return new_str
   }
   render() {
-
     if (this.props.poke){
+
       var move1 = this.props.poke.moves[0].move.name
       var move2 = this.props.poke.moves[1].move.name
       var move3 = this.props.poke.moves[2].move.name

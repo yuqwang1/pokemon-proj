@@ -32,7 +32,7 @@ class InfoBox extends Component {
 
       return(
         this.props.error ?
-        <h1> { this.props.error } </h1> :
+        <h1 className='info-error'> { this.props.error } </h1> :
         this.props.poke ?
         <div className='info-box'>
           { console.log(this.props.poke) }
