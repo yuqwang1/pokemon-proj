@@ -1,26 +1,31 @@
 body {
   background: white;
-  h1 {
-    color: red;
-  }
 }
 
-.info-box {
-  color: blue;
+.nav-bar {
 }
+
 
 .title {
   color: MediumSeaGreen;
-  margin-left: 30px;
+  margin-left: 60px;
+  width: 40%;
+}
+
+//SearchForm
+
+.left {
+  float: left;
+  width: 40%;
 }
 
 .search-form {
   display: flex;
   align-items: center;
   width: 300px;
-  margin-top: 20px;
+  margin-bottom: 0px;
   background-color: white;
-  margin-left: 30px;
+  margin-left: 60px;
   position: relative;
   background-color: #ffffff;
   -webkit-transition: box-shadow 200ms ease-in;
@@ -30,4 +35,71 @@ body {
   border-radius: 4px;
   box-shadow: 0 2px 4px rgba(0,0,0,0.1);
   height: 48px;
+}
+
+button {
+  background-color: '#e7e7e7';
+  color: black;
+  border-radius: 5px;
+}
+
+ button {
+  -webkit-transition-duration: 0.4s;
+  transition-duration: 0.4s;
+  outline: none;
+}
+
+ button:hover {
+  background-color: #4CAF50;
+  color: white;
+}
+
+.searchbar-button {
+  width: 40px;
+  height: 40px;
+  border: white;
+}
+
+
+
+// infoBox
+
+.info-box {
+  margin-left: 60px;
+  margin-top: 20px;
+  font-size: 20px;
+  font-family: "Times New Roman", Times, serif;
+}
+
+.poke-img {
+  width: 200px;
+  height: 180px;
+}
+
+.poke-name {
+  margin-bottom: 0px;
+  margin-top: 0px;
+}
+
+.poke-type2 {
+  margin-left: 58px;
+}
+
+.info-text {
+  margin-left: 35px;
+}
+
+// statGraph
+.stat-graph {
+  width: 60%;
+  float: right;
+  position: relative;
+}
+
+
+
+.toggle {
+  width: 20px;
+  position: relative;
+  left: 255px;
 }

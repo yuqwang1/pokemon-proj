@@ -5,12 +5,14 @@ import MoveGraph from './moveGraph';
 import AutoComplete from 'material-ui/AutoComplete';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import { connect } from 'react-redux';
-import { fetchPokes } from '../redux/actions/pokeActions'
+import { fetchPokes } from '../redux/actions/pokeActions';
+import Toggle from 'material-ui/Toggle';
+
 
 
 class SearchBar extends Component {
     state = {
-      search: '',
+      search: 'pikachu',
       poke: null,
       error: null,
       toggleOn: false
@@ -53,23 +55,41 @@ class SearchBar extends Component {
     }
 
     return(
-      <div className='search'>
-        <form onSubmit={ this.handleSubmit } className='search-form'>
-          <MuiThemeProvider>
-            <AutoComplete
-              floatingLabelText="Search your favorite pokemon"
-              filter={AutoComplete.fuzzyFilter}
-              dataSource={pokes}
-              maxSearchResults={3}
-              onUpdateInput={this.handleUpdateInput}
-              />
-          </MuiThemeProvider>
-          <input type='submit' value='Search'/>
-        </form>
-        <InfoBox poke={ poke } error={ error }/>
-        { this.state.poke ? <button onClick={ this.handleToggle }>Stats/Move</button> : null}
+      <div>
+        <div className='left'>
+          <form onSubmit={ this.handleSubmit } className='search-form'>
+            <MuiThemeProvider>
+              <AutoComplete
+                hintText="Search your favorite Pokémon"
+                filter={AutoComplete.fuzzyFilter}
+                dataSource={pokes}
+                maxSearchResults={3}
+                onUpdateInput={this.handleUpdateInput}
+                />
+            </MuiThemeProvider>
 
-        { !toggleOn ? <StatGraph poke={ poke }/> : <MoveGraph poke={ poke }/>}
+            <button className="searchbar-button" type='submit'><i className="fa fa-search fa-2x"></i></button>
+          </form>
+
+          <InfoBox poke={ poke } error={ error }/>
+        </div>
+
+        <div className='stat-graph'>
+          <div className='toggle'>
+            { this.state.poke ?
+              <MuiThemeProvider>
+                <Toggle
+                  label="Stats/Move"
+                  defaultToggled={false}
+                  onToggle={this.handleToggle}
+                  labelPosition="right"
+                  style={{margin: 20}}
+                  />
+              </MuiThemeProvider> : null}
+          </div>
+
+          { !toggleOn ? <StatGraph poke={ poke }/> : <MoveGraph poke={ poke }/>}
+        </div>
       </div>
 
     )

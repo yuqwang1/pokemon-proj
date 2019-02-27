@@ -20,8 +20,8 @@ class StatGraph extends Component {
       <div>
         { this.props.poke ?
         <BarChart
-        width={500}
-        height={300}
+        width={600}
+        height={400}
         data={ data }
         margin={ margin }
         >
