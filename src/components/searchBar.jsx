@@ -11,12 +11,16 @@ import Toggle from 'material-ui/Toggle';
 
 
 class SearchBar extends Component {
-    state = {
-      search: 'pikachu',
+  constructor(props){
+    super(props);
+    this.state = {
+      search: null,
       poke: null,
       error: null,
       toggleOn: false
     }
+
+  }
 
   componentDidMount(){
     this.props.fetchPokes();
@@ -29,10 +33,23 @@ class SearchBar extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
-    fetch(`https://pokeapi.co/api/v2/pokemon/${this.state.search}`)
-    .then(res => res.json())
-    .then(poke => this.setState({ poke }))
-    .catch(error => this.setState({ error }))
+    if (!this.state.search){
+      this.setState({ error: 'Search box can not be empty' })
+    } else {
+      fetch(`https://pokeapi.co/api/v2/pokemon/${this.state.search}`)
+      // .then(handleErrors)
+      .then(res => res.json())
+      .then(poke => this.setState({ poke, error: null }))
+      .catch(() => this.setState({ error: 'Please try another name' }))
+
+    }
+
+  // function handleErrors(response) {
+  //     if (!response.ok) {
+  //         throw Error(response.statusText);
+  //     }
+  //     return response;
+  //   }
   }
 
 
@@ -76,7 +93,7 @@ class SearchBar extends Component {
           <InfoBox poke={ poke } error={ error }/>
         </div>
 
-        { !poke ? <img className='stat-graph-toggle' alt='' src='https://wallup.net/wp-content/uploads/2017/11/17/178943-Pokemon.jpg'/> :
+        { error || !poke ? <img className='stat-graph-toggle' alt='' src='https://wallup.net/wp-content/uploads/2017/11/17/178943-Pokemon.jpg'/> :
           <div className='stat-graph-toggle'>
             <div className='toggle'>
               { this.state.poke ?

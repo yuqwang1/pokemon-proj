@@ -41,17 +41,13 @@ button {
   background-color: '#e7e7e7';
   color: black;
   border-radius: 5px;
-}
-
- button {
   -webkit-transition-duration: 0.4s;
   transition-duration: 0.4s;
   outline: none;
-}
-
- button:hover {
-  background-color: #4CAF50;
-  color: white;
+  &:hover {
+    background-color: #4CAF50;
+    color: white;
+  }
 }
 
 .searchbar-button {
@@ -127,12 +123,4 @@ button {
   width: 20px;
   position: relative;
   left: 280px;
-}
-
-// poke-move
-.poke-move {
-  font-size: 20px;
-  font-family: "Times New Roman", Times, serif;
-  text-align: center;
-  margin-top: 100px;
 }

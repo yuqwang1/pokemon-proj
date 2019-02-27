@@ -4,9 +4,6 @@ import {
 } from 'recharts';
 
 const margin = {top: 5, right: 30, bottom: 5, left: 20};
-const renderCustomBarLabel = ({ payload, x, y, width, height, value }) => {
-  return <text x={x + width / 2} y={y} fill="#808000" textAnchor="middle" dy={-6}>{`value: ${value}`}</text>;
-};
 
 class StatGraph extends Component {
 
@@ -58,9 +55,9 @@ class StatGraph extends Component {
         <Tooltip />
         <Legend />
 
-        <Bar legendType='diamond' type='monotone' barSize={80} dataKey='Attack' fill={ this.color(attack) } label={renderCustomBarLabel}/>
-        <Bar legendType='circle' type='monotone' barSize={80} dataKey='Defense' fill={ this.color(defense) } label={renderCustomBarLabel}/>
-        <Bar legendType='cross' type='monotone' barSize={80} dataKey='Stamina' fill={ this.color(stamina) } label={renderCustomBarLabel}/>
+        <Bar legendType='diamond' type='monotone' barSize={80} dataKey='Attack' fill={ this.color(attack) } />
+        <Bar legendType='circle' type='monotone' barSize={80} dataKey='Defense' fill={ this.color(defense) } />
+        <Bar legendType='cross' type='monotone' barSize={80} dataKey='Stamina' fill={ this.color(stamina) } />
 
         </BarChart> : null }
       </div>
