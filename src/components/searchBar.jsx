@@ -74,22 +74,24 @@ class SearchBar extends Component {
           <InfoBox poke={ poke } error={ error }/>
         </div>
 
-        <div className='stat-graph'>
-          <div className='toggle'>
-            { this.state.poke ?
-              <MuiThemeProvider>
-                <Toggle
-                  label="Stats/Move"
-                  defaultToggled={false}
-                  onToggle={this.handleToggle}
-                  labelPosition="right"
-                  style={{margin: 20}}
-                  />
-              </MuiThemeProvider> : null}
-          </div>
+        { !poke ? <img className='stat-graph-toggle' src='https://wallup.net/wp-content/uploads/2017/11/17/178943-Pokemon.jpg'/> :
+          <div className='stat-graph-toggle'>
+            <div className='toggle'>
+              { this.state.poke ?
+                <MuiThemeProvider>
+                  <Toggle
+                    label="Stats/Move"
+                    defaultToggled={false}
+                    onToggle={this.handleToggle}
+                    labelPosition="right"
+                    style={{margin: 20}}
+                    />
+                </MuiThemeProvider> : null}
+              </div>
 
-          { !toggleOn ? <StatGraph poke={ poke }/> : <MoveGraph poke={ poke }/>}
-        </div>
+              { !toggleOn ? <StatGraph poke={ poke }/> : <MoveGraph poke={ poke }/>}
+            </div>
+          }
       </div>
 
     )

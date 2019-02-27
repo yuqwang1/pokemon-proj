@@ -1,25 +1,6 @@
 import React, { Component } from 'react';
+import { POKECOLOR } from './pokeColor';
 
-const POKECOLOR = {
-  'bug': 'LawnGreen',
-  'dark': 'DimGrey',
-  'poison': 'DarkViolet',
-  'electric': 'Gold',
-  'dragon': 'DarkSlateBlue',
-  'fairy': 'violet',
-  'fighting': 'Crimson',
-  'fire': 'OrangeRed',
-  'flying': 'SteelBlue',
-  'ghost': 'indigo',
-  'grass': 'DarkGreen',
-  'ground': 'DarkGoldenrod',
-  'ice': 'Cyan',
-  'normal': 'Goldenrod',
-  'psychic': 'DeepPink',
-  'rock': 'Peru',
-  'steel': 'Silver',
-  'water': 'RoyalBlue'
-}
 
 class InfoBox extends Component {
 
@@ -42,7 +23,7 @@ class InfoBox extends Component {
           { console.log(this.props.poke) }
           <img src={ this.props.poke.sprites.front_default } alt='' className='poke-img'/>
           <br/>
-          <div className='info-text' style={styles}>
+          <div className='info-text' style={ styles }>
             <h2 className='poke-name'>{ name[0].toUpperCase() + name.substring(1) }</h2>
             <br/>
             <span> Defense: { this.props.poke.stats[3].base_stat }</span>

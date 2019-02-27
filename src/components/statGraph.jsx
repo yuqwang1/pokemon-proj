@@ -10,14 +10,14 @@ class StatGraph extends Component {
   render() {
     if (this.props.poke){
       var data = [
-        { text: 'Attack', value: this.props.poke.stats[4].base_stat },
-        { text: 'Defense', value: this.props.poke.stats[3].base_stat },
-        { text: 'Stamina', value: this.props.poke.stats[5].base_stat }
+        { text: 'Attack', stat: this.props.poke.stats[4].base_stat },
+        { text: 'Defense', stat: this.props.poke.stats[3].base_stat },
+        { text: 'Stamina', stat: this.props.poke.stats[5].base_stat }
       ]
     }
 
     return (
-      <div>
+      <div className='stat-graph'>
         { this.props.poke ?
         <BarChart
         width={600}
@@ -29,7 +29,7 @@ class StatGraph extends Component {
         <YAxis />
         <Tooltip />
         <Legend />
-        <Bar dataKey='value' fill='red' />
+        <Bar dataKey='stat' fill='red' />
 
         </BarChart> : null }
       </div>

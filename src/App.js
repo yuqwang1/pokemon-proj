@@ -18,7 +18,7 @@ class App extends Component {
   render () {
     return (
       <Provider store={store}>
-        <div className='nav-bar'>
+        <div>
           <h1 className='title'>{this.props.title}</h1>
           <SearchBar/>
         </div>
