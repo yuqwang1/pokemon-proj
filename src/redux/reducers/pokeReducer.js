@@ -9,6 +9,7 @@ export default function(state = initialState, action) {
   switch (action.type) {
     case FETCH_POKES:
       return {
+        ...state,
         pokemons: action.pokemons
       }
 

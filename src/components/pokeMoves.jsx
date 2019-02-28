@@ -3,7 +3,7 @@ import { POKECOLOR, capitalize } from './util';
 
 const PokeMoves = ({poke}) => {
 
-  if (poke){
+  if (poke) {
     var move1 = poke.moves[0].move.name
     var move2 = poke.moves[1].move.name
     var move3 = poke.moves[2].move.name
