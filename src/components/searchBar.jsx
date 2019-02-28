@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import InfoBox from './infoBox';
 import StatGraph from './statGraph';
-import MoveGraph from './moveGraph';
+import PokeMoves from './pokeMoves';
 import AutoComplete from 'material-ui/AutoComplete';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import { connect } from 'react-redux';
@@ -9,12 +9,11 @@ import { fetchPokes } from '../redux/actions/pokeActions';
 import Toggle from 'material-ui/Toggle';
 
 
-
 class SearchBar extends Component {
-  constructor(props){
+  constructor(props) {
     super(props);
     this.state = {
-      search: null,
+      search: '',
       poke: null,
       error: null,
       toggleOn: false
@@ -22,40 +21,31 @@ class SearchBar extends Component {
 
   }
 
-  componentDidMount(){
+  componentDidMount() {
     this.props.fetchPokes();
   }
 
 
   handleToggle = () => {
-    this.setState({ toggleOn: !this.state.toggleOn })
+    this.setState({toggleOn: !this.state.toggleOn})
   }
 
   handleSubmit = (e) => {
     e.preventDefault();
-    if (this.state.search.trim()){
-      fetch(`https://pokeapi.co/api/v2/pokemon/${this.state.search.trim()}`)
-      // .then(handleErrors)
+    if (this.state.search.trim()) {
+      fetch(`https://pokeapi.co/api/v2/pokemon/${this.state.search.trim().toLowerCase()}`)
       .then(res => res.json())
-      .then(poke => this.setState({ poke, error: null }))
-      .catch(() => this.setState({ error: 'Please try another name' }))
+      .then(poke => this.setState({poke, error: null}))
+      .catch(() => this.setState({error: 'Please try another name'}))
     } else {
-      this.setState({ error: 'Search box can not be empty' })
-
+      this.setState({error: 'Search box can not be empty'})
     }
-
-  // function handleErrors(response) {
-  //     if (!response.ok) {
-  //         throw Error(response.statusText);
-  //     }
-  //     return response;
-  //   }
   }
 
 
   handleUpdateInput = (search) => {
     this.setState({
-      search,
+      search
     });
   };
 
@@ -63,18 +53,18 @@ class SearchBar extends Component {
 
 
   render() {
-    const { poke, error, toggleOn,} = this.state
+    const {poke, error, toggleOn} = this.state
     let pokes = [];
-    if (this.props.pokemons){
+    if (this.props.pokemons) {
        pokes = this.props.pokemons.results.map(poke => (
         poke.name
       ))
     }
 
-    return(
+    return (
       <div>
-        <div className='left'>
-          <form onSubmit={ this.handleSubmit } className='search-form'>
+        <div className='search-bar-info-box'>
+          <form onSubmit={this.handleSubmit} className='search-form'>
             <div className='auto-complete'>
               <MuiThemeProvider>
                 <AutoComplete
@@ -86,33 +76,29 @@ class SearchBar extends Component {
                   />
               </MuiThemeProvider>
             </div>
-
             <button className="searchbar-button" type='submit'><i className="fa fa-search fa-2x"></i></button>
           </form>
-
-          <InfoBox poke={ poke } error={ error }/>
+          <InfoBox poke={poke} error={error}/>
         </div>
 
-        { error || !poke ? <img className='stat-graph-toggle' alt='' src='https://wallup.net/wp-content/uploads/2017/11/17/178943-Pokemon.jpg'/> :
-          <div className='stat-graph-toggle'>
-            <div className='toggle'>
-              { this.state.poke ?
-                <MuiThemeProvider>
-                  <Toggle
-                    label="Stats/Move"
-                    defaultToggled={false}
-                    onToggle={this.handleToggle}
-                    labelPosition="right"
-                    style={{margin: 20}}
-                    />
-                </MuiThemeProvider> : null}
-              </div>
-
-              { !toggleOn ? <StatGraph poke={ poke }/> : <MoveGraph poke={ poke }/>}
-            </div>
-          }
+        {error || !poke ? <img className='stat-graph-toggle' alt='' src='https://barbarashdwallpapers.com/wp-content/uploads/2015/12/Pokemon-wallpaper-with-Mudkip-Pikachu-and-Chikorita.jpg'/> :
+        <div className='stat-graph-toggle'>
+          <div className='toggle'>
+            {poke ?
+            <MuiThemeProvider>
+              <Toggle
+                  label="Stats/Move"
+                  defaultToggled={false}
+                  onToggle={this.handleToggle}
+                  labelPosition="right"
+                  style={{margin: 20}}
+              />
+            </MuiThemeProvider> : null}
+          </div>
+          {!toggleOn ? <StatGraph poke={poke}/> : <PokeMoves poke={poke}/>}
+        </div>
+        }
       </div>
-
     )
   }
 }
@@ -121,4 +107,4 @@ const mapStateToProps = state => ({
   pokemons: state.pokes.pokemons
 })
 
-export default connect(mapStateToProps, { fetchPokes })(SearchBar);
+export default connect(mapStateToProps, {fetchPokes})(SearchBar);

@@ -18,3 +18,15 @@ export const POKECOLOR = {
   'steel': 'Silver',
   'water': 'RoyalBlue'
 }
+
+export const capitalize = string => {
+  let new_str = '';
+  for (let i = 0; i < string.length; i++) {
+    if (i === 0 || string[i - 1] === '-') {
+      new_str += string[i].toUpperCase()
+    } else {
+      new_str += string[i]
+    }
+  }
+  return new_str
+}
