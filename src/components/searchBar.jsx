@@ -10,7 +10,6 @@ import Toggle from 'material-ui/Toggle';
 
 
 class SearchBar extends Component {
-  debugger
   constructor(props) {
     super(props);
     this.state = {
